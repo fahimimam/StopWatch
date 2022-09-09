@@ -6,6 +6,8 @@ const second = document.querySelector(".sc");
 const centiSecond = document.querySelector(".cs");
 const minute = document.querySelector(".mn")
 const laps = document.querySelector(".laps")
+const bg = document.querySelector(".outer-circle");
+
 
 let isPlay = false;
 let secCounter = 0;
@@ -20,6 +22,7 @@ const play = () => {
     toggleButton();
     if (isPlay) {
         playButton.textContent = "Pause";
+        bg.classList.add("animation-bg");
         sec = setInterval(() => {
             secCounter++;
             if(secCounter === 60) secCounter = 0;
@@ -59,6 +62,7 @@ const play = () => {
     }
     else {
         playButton.textContent = "Play";
+        bg.classList.remove("animation-bg")
         clearInterval(sec);
         clearInterval(centiSec);
         clearInterval(min);
