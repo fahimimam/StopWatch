@@ -1,6 +1,7 @@
 const playButton = document.querySelector("#playBtn");
 const lapButton = document.querySelector("#lapBtn");
 const resetButton = document.querySelector("#resetBtn");
+const clrButton = document.querySelector("#clrbtn");
 const second = document.querySelector(".sc");
 const centiSecond = document.querySelector(".cs");
 const minute = document.querySelector(".mn")
@@ -90,11 +91,16 @@ const lap = () =>{
     timestamp.setAttribute("class","time-stamp");
     number.textContent = `#${++lapItem}`;
     timestamp.textContent = `${minCounter} : ${secCounter} : ${centiSecCounter}`;
-
+    clrButton.classList.remove("hidden");
     li.append(number, timestamp);
     laps.append(li);
 }
 
+const clearAll = () => {
+    lapItem = 0;
+    laps.innerHTML = '';
+    clrButton.classList.add("hidden");
+}
 
 const toggleButton = () => {
     lapButton.classList.remove("hidden");
@@ -104,4 +110,5 @@ const toggleButton = () => {
 resetButton.addEventListener("click", reset);
 playButton.addEventListener("click", play);
 lapButton.addEventListener("click", lap)
+clrButton.addEventListener("click", clearAll);
 
